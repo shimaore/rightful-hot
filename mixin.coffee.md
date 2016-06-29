@@ -55,12 +55,12 @@ If that fails, try to find using only the language.
 
 Try to find a translation.
 
-          message = try @getIntlMessage path
+          message = @getIntlMessage path
 
 If no translation is found, use the default message.
 
           message ?= path
-          text = try @formatMessage message, values
+          text = @formatMessage message, values
           text
 
 Provide default locale early
