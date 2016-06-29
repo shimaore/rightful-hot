@@ -20,7 +20,9 @@
 
   # Set the locales when the user chooses.
   @setLocale = =>
-    @ev.trigger 'set-locales', [@locale.value]
+    locales = [@locale.value]
+    debug 'setLocale', locales
+    @ev.trigger 'set-locales', locales
     false
 
 </language-selector>
