@@ -10,11 +10,11 @@
     <option value="fr-FR">Français</option>
   </select>
 
-  debug = (require 'debug') 'flowery-seat:language-selector.tag'
+  debug = (require 'debug') 'rightful-hot:language-selector.tag'
 
   # Set the locales once on startup.
   @on 'mount', =>
-    locales = (require 'rightful-hot/get-locales')()
+    locales = (require './get-locales')()
     debug 'mount', locales
     @ev.trigger 'set-locales', locales
 
