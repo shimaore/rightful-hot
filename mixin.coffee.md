@@ -1,8 +1,6 @@
 Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the locale is modified.
 (Require riot-intl since we re-use `formatMessage`, `getIntlMessage`.)
 
-    debug = (require 'debug') 'rightful-hot:mixin'
-
     module.exports = (ev,{messages}) ->
       init: ->
         @ev = ev
@@ -18,7 +16,6 @@ The riotIntl mixin uses @locales, @formats, and @messages.
         @Messages = messages
 
         ev.on 'set-locales', (locales) =>
-          debug 'set-locales', locales
           langs = locales.map (n) -> n.split('-')[0]
           @locales = locales
           @langs = langs
