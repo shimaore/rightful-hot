@@ -55,7 +55,7 @@ If that fails, try to find using only the language.
 
 Try to find a translation.
 
-          message = @getIntlMessage path
+          message = try @getIntlMessage path
 
 If no translation is found, use the default message.
 
