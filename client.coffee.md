@@ -14,17 +14,14 @@ and https://github.com/petkaantonov/bluebird/issues/897
 
     Debug = require 'debug'
     Debug.enable "#{pkg.name}:*"
-    # Debug.enable 'zappajs-client'
+    Debug.enable 'zappajs-client'
     debug = Debug @name
 
     @Debug = Debug
 
-i18n
-
-    i18n = require './i18n'
     Mixin = require './mixin'
 
-    @main = (stores,messages,config) ->
+    @main = (stores,config,f) ->
 
 For tests only
 
@@ -43,16 +40,15 @@ Remember: `@ev` is our Dispatcher.
 
         @ready ->
           debug 'Zappa ready'
-          opts = {}
           ev = @ev
-          opts.client = true
 
-Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the locale is modified.
-Also extends with riotIntl
+          if config.mixins?
+            for mixin in config.mixins
+              riot.mixin mixin @ev, config
 
-          riot.mixin Mixin ev, messages
+          riot.mixin Mixin @ev, config
 
-          riot.mount 'app', 'app', opts
+          f.call this
 
         debug 'Waiting for Zappa ready'
 

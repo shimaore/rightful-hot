@@ -1,23 +1,20 @@
 Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the locale is modified.
 (Require riot-intl since we re-use `formatMessage`, `getIntlMessage`.)
 
-    riotIntl = require 'riot-intl'
 
-    module.exports = (ev,Messages) ->
+    module.exports = (ev,{messages}) ->
       init: ->
         @ev = ev
 
 i18n
 ====
 
-        @mixin riotIntl.IntlMixin
-
 The riotIntl mixin uses @locales, @formats, and @messages.
 
         @locales = []
         @formats = {}
         @messages = {}
-        @Messages = Messages
+        @Messages = messages
 
         ev.on 'set-locales', (locales) =>
           langs = locales.map (n) -> n.split('-')[0]
@@ -29,8 +26,6 @@ The riotIntl mixin uses @locales, @formats, and @messages.
           @messages_lang = null
 
 `@Messages` contains the entire list of messages (for all locales)
-
-          messages = @Messages
 
 `@messages` (used by riot-intl) contains the list of messages for the current locale.
 
@@ -65,7 +60,7 @@ Try to find a translation.
 If no translation is found, use the default message.
 
           message ?= path
-          text = @formatMessage message, values
+          text = try @formatMessage message, values
           text
 
 Provide default locale early
