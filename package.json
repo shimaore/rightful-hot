@@ -4,7 +4,7 @@
   "description": "App convention for RiotJS+ZappaJS",
   "main": "client.js",
   "scripts": {
-    "prepublish": "coffee -c *.coffee.md",
+    "prepublish": "coffee -c *.coffee.md && for tag in *.tag; do riot --type coffeescript ${tag}; done",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Stéphane Alnet <stephane@shimaore.net> (http://stephane.shimaore.net/)",
@@ -16,6 +16,7 @@
     "zappajs-client": "^2.2.2"
   },
   "devDependencies": {
-    "coffee-script": "^1.10.0"
+    "coffee-script": "^1.10.0",
+    "riot-cli": "^2.6.1"
   }
 }
