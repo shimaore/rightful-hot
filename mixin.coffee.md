@@ -1,8 +1,14 @@
 Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the locale is modified.
 (Require riot-intl since we re-use `formatMessage`, `getIntlMessage`.)
 
+    {IntlMixin} = require 'riot-intl/lib/riot-intl'
+
     module.exports = (ev,{messages}) ->
       init: ->
+
+event dispatcher
+================
+
         @ev = ev
 
 i18n
@@ -61,3 +67,5 @@ If no translation is found, use the default message.
           message ?= path
           text = @formatMessage message, values
           text
+
+        @mixin IntlMixin
