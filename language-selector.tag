@@ -1,16 +1,15 @@
 <language-selector>
   <!-- Language selector -->
+  <select name="locale" onchange={setLocale}>
+    <option each={available_locales} value={locale}>{name}</option>
+  </select>
   <span>
-    <i18n lang="en">Language:</i18n>
-    <i18n lang="fr">Langue:</i18n>
     { locales[0] }
   </span>
-  <select name="locale" onchange={setLocale}>
-    <option value="en-US">English</option>
-    <option value="fr-FR">Français</option>
-  </select>
 
   debug = (require 'debug') 'rightful-hot:language-selector.tag'
+
+  @available_locales = ({locale,name:v.__name} for own locale,v of @messages)
 
   # Set the locales once on startup.
   @on 'mount', =>
