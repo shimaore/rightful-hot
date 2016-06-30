@@ -9,10 +9,11 @@
 
   debug = (require 'debug') 'rightful-hot:language-selector.tag'
 
-  @available_locales = ({locale,name:v.__name} for own locale,v of @messages)
+  @available_locales = []
 
   # Set the locales once on startup.
   @on 'mount', =>
+    @available_locales = ({locale,name:v.__name} for own locale,v of @messages)
     locales = (require './get-locales')()
     debug 'mount', locales
     @ev.trigger 'set-locales', locales
