@@ -68,4 +68,6 @@ If no translation is found, use the default message.
           text = @formatMessage message, values
           text
 
+Load the riot-intl mixin
+
         @mixin IntlMixin
