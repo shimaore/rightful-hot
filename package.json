@@ -12,7 +12,6 @@
   "dependencies": {
     "debug": "^2.2.0",
     "riot-intl": "git+https://github.com/shimaore/riot-intl.git",
-    "seem": "^1.2.0",
     "uuid": "^2.0.2",
     "zappajs-client": "^2.2.2"
   },
