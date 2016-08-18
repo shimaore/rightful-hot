@@ -13,7 +13,7 @@
     "debug": "^2.2.0",
     "riot-intl": "git+https://github.com/shimaore/riot-intl.git",
     "uuid": "^2.0.2",
-    "zappajs-client": "^2.2.2"
+    "zappajs-client": "^2.3.0"
   },
   "devDependencies": {
     "coffee-script": "^1.10.0",
