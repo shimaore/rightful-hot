@@ -1,6 +1,6 @@
 {
   "name": "rightful-hot",
-  "version": "2.1.3",
+  "version": "2.1.4",
   "description": "App convention for RiotJS+ZappaJS",
   "main": "client.js",
   "scripts": {
