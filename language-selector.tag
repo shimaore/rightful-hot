@@ -1,6 +1,6 @@
 <language-selector>
   <!-- Language selector -->
-  <select name="locale" onchange={setLocale}>
+  <select ref="locale" onchange={setLocale}>
     <option each={available_locales} value={locale}>{name}</option>
   </select>
   <span>
@@ -19,7 +19,7 @@
 
   # Set the locales when the user chooses.
   @setLocale = =>
-    locales = [@locale.value]
+    locales = [@refs.locale.value]
     debug 'setLocale', locales
     @ev.trigger 'set-locales', locales
     false
