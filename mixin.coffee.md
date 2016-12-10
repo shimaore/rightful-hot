@@ -3,6 +3,9 @@ Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and 
 
     {IntlMixin} = require 'riot-intl/lib/riot-intl'
 
+    current_messages = {}
+    current_locales = []
+
     module.exports = (ev,{messages}) ->
       init: ->
 
@@ -16,9 +19,12 @@ i18n
 
 The riotIntl mixin uses @locales, @formats, and @messages.
 
-        @locales = []
+        @locales = current_locales
         @formats = {}
-        @messages = {}
+        @messages = current_messages
+
+This is our way to allow our users to access the original messages stash.
+
         @Messages = messages
 
         ev.on 'set-locales', (locales) =>
@@ -46,11 +52,16 @@ First try to find the exact locale.
 If that fails, try to find using only the language.
 
             for lang in langs
-              if not @messages and lang of messages
+              if not @messages? and lang of messages
                 @messages = messages[lang]
                 @messages_lang = lang
 
           @messages ?= {}
+
+Save the values so that tags initialized after the `set-locales` event may benefit from them.
+
+          current_messages = @messages
+          current_locales = locales
 
           @update()
 
