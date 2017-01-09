@@ -6,7 +6,7 @@ Initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the l
     current_messages = {}
     current_locales = []
 
-    module.exports = (messages) ->
+    module.exports = (ev,messages) ->
       init: ->
 
 i18n

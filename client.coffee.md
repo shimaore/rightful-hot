@@ -51,7 +51,7 @@ Remember: `@ev` is our Dispatcher, created by ZappaJS-client.
 
           @riot.mixin EvMixin @ev
           if config.messages?
-            @riot.mixin I18nMixin config.messages
+            @riot.mixin I18nMixin @ev, config.messages
           else
             debug 'config.messages is not initialized'
 
