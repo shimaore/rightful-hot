@@ -1,6 +1,8 @@
 Handle Socket.IO disconnect / reconnect
 =======================================
 
+    debug = (require 'debug') 'rightful-hot:socketio'
+
     exports.include = ({ev}) ->
 
       io_failures = [
