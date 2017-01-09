@@ -31,7 +31,7 @@ Reject with reported errors.
           ev.one "#{event}:error", (error) ->
             debug "#{event}:error", error
             clearTimeout timer if timer?
-            reject error ? new StoreError """
+            reject error ? new WrapperError """
               #{event} trigerred an error
             """
 
@@ -40,7 +40,7 @@ Also reject if we timeout.
           timer = setTimeout ->
             debug "#{event}:timeout"
             timer = null
-            reject new StoreError """
+            reject new WrapperError """
               #{event} timed out after #{timeout}ms
             """
           , timeout
