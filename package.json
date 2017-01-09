@@ -4,9 +4,9 @@
   "description": "App convention for RiotJS+ZappaJS",
   "main": "client.js",
   "scripts": {
-    "prepublish": "coffee -c *.coffee.md && for tag in *.tag; do riot --type coffeescript ${tag}; done",
+    "prepublish": "coffee -c -M *.coffee.md && for tag in *.tag; do riot --type coffeescript ${tag}; done",
     "pretest": "npm install",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Stéphane Alnet <stephane@shimaore.net> (http://stephane.shimaore.net/)",
   "license": "Unlicense",
@@ -14,10 +14,13 @@
     "debug": "^2.3.3",
     "riot-intl": "git+https://github.com/shimaore/riot-intl.git",
     "uuid": "^3.0.1",
-    "zappajs-client": "^2.4.2"
+    "zappajs-client": "^2.4.4"
   },
   "devDependencies": {
-    "coffee-script": "^1.12.1",
+    "chai": "^3.5.0",
+    "coffee-coverage": "^1.0.1",
+    "coffee-script": "^1.12.2",
+    "mocha": "^3.2.0",
     "riot-cli": "^3.0.0"
   }
 }
