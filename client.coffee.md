@@ -52,8 +52,8 @@ Remember: `@ev` is our Dispatcher.
               riot.mixin mixin @ev, config
 
           riot.mixin Mixin @ev, config
-          riot.mixin Wrapper()
-          riot.mixin Throttle()
+          riot.mixin WrapperMixin()
+          riot.mixin ThrottleMixin()
 
           f.call this
 
