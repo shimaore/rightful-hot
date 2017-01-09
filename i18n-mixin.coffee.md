@@ -1,4 +1,4 @@
-Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the locale is modified.
+Initialize `@locales`, `@formats` and `@messages` (used by riot-intl) when the locale is modified.
 (Require riot-intl since we re-use `formatMessage`, `getIntlMessage`.)
 
     {IntlMixin} = require 'riot-intl/lib/riot-intl'
@@ -6,13 +6,8 @@ Extend with our own mixin: provide `@ev`, initialize `@locales`, `@formats` and 
     current_messages = {}
     current_locales = []
 
-    module.exports = (ev,{messages}) ->
+    module.exports = (messages) ->
       init: ->
-
-event dispatcher
-================
-
-        @ev = ev
 
 i18n
 ====

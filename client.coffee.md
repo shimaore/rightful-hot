@@ -2,10 +2,9 @@
     @name = "#{pkg.name}:client"
 
     Zappa = require 'zappajs-client'
-    {riot} = Zappa
 
     @Zappa = Zappa
-    @riot = riot
+    @riot = Zappa.riot
 
 See http://bluebirdjs.com/docs/install.html#browserify-and-webpack
 and https://github.com/petkaantonov/bluebird/issues/897
@@ -19,14 +18,18 @@ and https://github.com/petkaantonov/bluebird/issues/897
 
     @Debug = Debug
 
-    Mixin = require './mixin'
+    EvMixin = require './ev-mixin'
+    I18nMixin = require './i18n-mixin'
     WrapperMixin = require './wrapper-mixin'
     ThrottleMixin = require './throttle-mixin'
     SocketStore = require './socketio-failures'
 
-    @main = (stores,config,f) ->
+    @main = (config,f) ->
 
-For tests only
+      if typeof config is 'function'
+        [config,f] = [null,config]
+
+Use `window.config` for test purposes only.
 
       config ?= window.config ? {}
       debug 'Using config', config
@@ -36,24 +39,21 @@ For tests only
 
         @cfg = config
 
-Remember: `@ev` is our Dispatcher.
-
-        for store in stores
-          store.include.call this, this
-
-        SocketStore.include.call this, this
+        @include SocketStore
 
         @ready ->
           debug 'Zappa ready'
-          ev = @ev
 
-          if config.mixins?
-            for mixin in config.mixins
-              riot.mixin mixin @ev, config
+          @riot.mixin WrapperMixin()
+          @riot.mixin ThrottleMixin()
 
-          riot.mixin Mixin @ev, config
-          riot.mixin WrapperMixin()
-          riot.mixin ThrottleMixin()
+Remember: `@ev` is our Dispatcher, created by ZappaJS-client.
+
+          @riot.mixin EvMixin @ev
+          if config.messages?
+            @riot.mixin I18nMixin config.messages
+          else
+            debug 'config.messages is not initialized'
 
           f.call this
 
