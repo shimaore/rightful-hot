@@ -20,6 +20,9 @@ and https://github.com/petkaantonov/bluebird/issues/897
     @Debug = Debug
 
     Mixin = require './mixin'
+    WrapperMixin = require './wrapper-mixin'
+    ThrottleMixin = require './throttle-mixin'
+    SocketStore = require './socketio-failures'
 
     @main = (stores,config,f) ->
 
@@ -38,6 +41,8 @@ Remember: `@ev` is our Dispatcher.
         for store in stores
           store.include.call this, this
 
+        SocketStore.include.call this, this
+
         @ready ->
           debug 'Zappa ready'
           ev = @ev
@@ -47,6 +52,8 @@ Remember: `@ev` is our Dispatcher.
               riot.mixin mixin @ev, config
 
           riot.mixin Mixin @ev, config
+          riot.mixin Wrapper()
+          riot.mixin Throttle()
 
           f.call this
 
