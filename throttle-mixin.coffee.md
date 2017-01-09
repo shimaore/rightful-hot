@@ -1,6 +1,6 @@
 RiotJS mixin that wraps an event sequence in a Promise.
 
-    Throttle = require './throttle.coffee.md'
+    Throttle = require './throttle'
 
     module.exports = ->
       init: ->

@@ -1,6 +1,6 @@
 RiotJS mixin that wraps an event sequence in a Promise.
 
-    Wrapper = require './wrapper.coffee.md'
+    Wrapper = require './wrapper'
 
     module.exports = ->
       init: ->
