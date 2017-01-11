@@ -16,10 +16,3 @@ if the ZappaJS-client negotiation failed.
         @on 'failed', ->
           debug 'failed', @data
           @ev.trigger 'socketio-fail'
-
-On ZappaJS-client ready we send a generic `subscribe` message.
-In response, the server will emit `ready`.
-
-        @ev.on 'ready', =>
-          debug 'ready → emit join'
-          @emit 'join' # Triggers 'ready' from the server-side.
