@@ -23,6 +23,7 @@ and https://github.com/petkaantonov/bluebird/issues/897
     WrapperMixin = require './wrapper-mixin'
     ThrottleMixin = require './throttle-mixin'
     SocketStatus = require './socketio-status'
+    Startup = require './startup'
 
     @main = (config,f) ->
 
@@ -40,6 +41,7 @@ Use `window.config` for test purposes only.
         @cfg = config
 
         @include SocketStatus
+        @include Startup
 
         @ready ->
           debug 'Zappa ready'

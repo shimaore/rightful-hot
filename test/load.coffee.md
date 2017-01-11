@@ -1,14 +1,16 @@
     describe 'Modules', ->
       modules = [
         # 'client'
-        # 'mixin'
-        'throttle'
-        'update'
-        'wrapper-mixin'
+        'ev-mixin'
         'get-locales'
-        'socketio-failures'
+        # 'i18n-mixin'
+        'socketio-status'
+        'startup'
+        'throttle'
         'throttle-mixin'
+        'update'
         'wrapper'
+        'wrapper-mixin'
       ]
       for m in modules
         do (m) ->
