@@ -20,13 +20,12 @@ config =
   messages: 'en-US': {...}
 
 socketio_module =
-  include: ({ev}) ->
+  include: ->
     # executed in a ZappaJS-client context
-    @on 'event-from-server', -> ev.trigger 'event'
-    ev.on 'event-from-client', => @emit 'event-to-server'
+    @on 'event-from-server', -> @ev.trigger 'event'
+    @ev.on 'event-from-client', => @emit 'event-to-server'
 
-main config, ->
-  @include socketio_module
-  @riot.mixin myMixin
+main config, seem ->
+  yield @include socketio_module
   @riot.mount '*', client:true
 ```
