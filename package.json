@@ -9,6 +9,9 @@
     "test": "mocha"
   },
   "author": "Stéphane Alnet <stephane@shimaore.net> (http://stephane.shimaore.net/)",
+  "contributors": [
+    "Cédric Joron (cedj)"
+  ],
   "license": "Unlicense",
   "dependencies": {
     "debug": "^2.6.0",
