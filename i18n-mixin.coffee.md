@@ -58,7 +58,8 @@ Save the values so that tags initialized after the `set-locales` event may benef
           current_messages = @messages
           current_locales = locales
 
-          @update()
+          try @update()
+          null
 
         @i18n = (path,values) =>
 
