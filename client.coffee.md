@@ -44,17 +44,22 @@ Use `window.config` for test purposes only.
         @ready ->
           debug 'Zappa ready'
 
+          debug 'Loading wrapper mixin'
           @riot.mixin WrapperMixin()
+          debug 'Loading throttle mixin'
           @riot.mixin ThrottleMixin()
 
 Remember: `@ev` is our Dispatcher, created by ZappaJS-client.
 
+          debug 'Loading event mixin'
           @riot.mixin EvMixin @ev
+          debug 'Loading I18N mixin'
           if config.messages?
             @riot.mixin I18nMixin @ev, config.messages
           else
             debug 'config.messages is not initialized'
 
+          debug 'Calling main function'
           f.call this
 
         debug 'Waiting for Zappa ready'
