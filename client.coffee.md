@@ -12,8 +12,6 @@ and https://github.com/petkaantonov/bluebird/issues/897
     Promise.config? longStackTraces: false, warnings: false
 
     Debug = require 'debug'
-    Debug.enable "#{pkg.name}:*"
-    Debug.enable 'zappajs-client'
     debug = Debug @name
 
     @Debug = Debug
@@ -62,3 +60,5 @@ Remember: `@ev` is our Dispatcher, created by ZappaJS-client.
         debug 'Waiting for Zappa ready'
 
       debug 'Ready', config
+
+    debug 'Ready'
